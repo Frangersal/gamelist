@@ -1,0 +1,18 @@
+.bg-azul-primario {
+    background-color: #002060;
+  }
+.bg-azul-secundario {
+    background-color: #00194A;
+  }
+
+.bg-amarillo-verde{
+    background: linear-gradient(to bottom, #FFFF00, #BCFF00);
+    border-radius: 50px;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #002060;
+    text-align:center;
+
+    display: block;
+    margin: 10px;
+    border: 1px solid #73AD21;
+}
