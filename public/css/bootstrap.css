@@ -581,8 +581,8 @@ pre code {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  /* margin-right: -15px;
+  margin-left: -15px; */
 }
 
 .no-gutters {
@@ -4665,11 +4665,14 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-brand {
-  color: #fff;
+  /* color: #fff; */
+  color:#C9FF01;
+  
 }
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
-  color: #fff;
+  /* color: #fff; */
+  color:#C9FF01;
 }
 
 .navbar-dark .navbar-nav .nav-link {

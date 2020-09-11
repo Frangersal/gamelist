@@ -1,27 +1,27 @@
 @extends('layouts.app')
 @section('content')
 <div class="content">
-    <div class="row">
-        <div class="col bg-azul-secundario" >
+    <!-- <div class="row">
+        <div class="col-2 bg-azul-secundario" >
         
         </div>
-        <div class="col-9 bg-azul-primario"  >
+        <div class="col-8 bg-azul-primario"  >
         
-        <div class="bg-amarillo-verde">
+        <div class="bg-azul-negro">
                 titulo 1 
         </div>
 
         </div>
         
-        <div class="col bg-azul-secundario ">
+        <div class="col-1 bg-azul-secundario ">
         </div>
-    </div>
+    </div> -->
     
     <div class="row">
 
-        <div class="col bg-azul-secundario " > </div>
+        <div class="col-2 bg-azul-secundario " > </div>
 
-        <div class="col-9 bg-azul-primario">
+        <div class="col-8 bg-azul-primario">
 
             <!-- Carusel -->
 
@@ -122,7 +122,7 @@
             <br>
         </div>
 
-        <div class="col bg-azul-secundario" > </div>
+        <div class="col-1 bg-azul-secundario" > </div>
 
     </div>
 </div>

@@ -16,3 +16,35 @@
     margin: 10px;
     border: 1px solid #73AD21;
 }
+.bg-azul-negro{
+    /* background: linear-gradient(to bottom, #010626, #000000); */
+    background: linear-gradient(to bottom, rgba(1,6,38,1) 0%, rgba(0,0,0,1) 100%);
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #C9FF01;
+
+    display: block;
+    /* margin: 10px; */
+    border: 1px solid #000000;
+}
+
+/*** boton degradado amarillo verde****/
+
+.btn-amarillo-verde {
+  color: #C9FF01;
+  background:  linear-gradient(to bottom, rgba(1,6,38,1) 0%, rgba(0,0,0,1) 100%);
+  border-color: #C9FF01;
+  /* border-radius: 50px; */
+}
+
+.btn-amarillo-verde:hover {
+  color: #fff;
+  background-color: #C9FF01;
+  border-color: #ffffff;
+  /* border-radius: 50px; */
+}
+
+.centrado{
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
