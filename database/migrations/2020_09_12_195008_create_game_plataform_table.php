@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateGamePlataformTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('game_plataform', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('nick');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             
-            $table->string('picture');
-            $table->rememberToken();
+            //plataforms
+            $table->unsignedBigInteger('plataform_id');
+            $table->foreign('plataform_id')->references('id')->on('plataforms');
+
+            $table->unsignedBigInteger('game_id');
+            $table->foreign('game_id')->references('id')->on('games');
+
             $table->timestamps();
+
         });
     }
 
@@ -35,6 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('game_plataform');
     }
 }

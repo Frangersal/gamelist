@@ -82,6 +82,15 @@
                                         {{ __('Cerrar sesion') }}
                                     </a>
 
+                                    
+                                    @can('admin-users')
+                                    <a class = "dropdown-item" href="{{ route('admin.users.index') }}">
+                                        Administrar Usuarios
+                                    </a>
+                                    @endcan 
+
+
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

@@ -12,7 +12,7 @@
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Buscar...">
             <div class="input-group-append">
-                <button class="btn btn-amarillo-verde" type="submit">Buscar</button>
+                <button class="btn btn-amarillo-verde"  type="submit">Buscar</button>
             </div>
         </div>
         
@@ -40,55 +40,29 @@
                 <h2>Titulo 1</h2> 
             </div>
         
-            <div class="bg-azul-primario">
-                <div class="card" style="width: 10rem;">
-                    <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example</p>
-                        <a href="#" class="btn btn-primary">+GameList</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Titulos -->
-
-            <div class="row">
-                <div class="col bg-amarillo-verde" >
-                    <h2>Titulo 2</h2> 
-                </div>
-                <div class="col bg-amarillo-verde ">
-                    <h2>Titulo 3</h2> 
-                </div>
-            </div>
-        
-            <div class="row">
-                <div class="col bg-azul-primario">
-                    <div class="card" style="width: 10rem;">
-                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example</p>
-                            <a href="#" class="btn btn-primary">+GameList</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col bg-azul-primario">
-                    <div class="card" style="width: 10rem;">
-                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example</p>
-                            <a href="#" class="btn btn-primary">+GameList</a>
-                        </div>
-                    </div>
-                </div>
+            <button type="button" class="btn btn-primary" onclick="traer()">Obtener</button>
+            <div class="mt-5" id="contenido">
+            
             </div>
             <br>
+           
         </div>
 
         <div class="col bg-azul-secundario" > </div>
 
     </div>
 </div>
+
+<script>
+    var contenido = document.querySelector('#contenido')
+    function traer(){
+        fetch('text.txt')
+        .then(data=>data.text())
+        .then(data=>{
+            console.log(data)
+            contenido.innerHTML='${data}'
+        })
+    }
+</script>
+
 @endsection

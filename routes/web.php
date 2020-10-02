@@ -28,3 +28,9 @@ Route::get('/test', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users')->group(function(){    //Carpeta, prefijo, consola
+    Route::resource('/users','UsersController', ['except'=>['show','create','store']]);                         //Ruta url, controller, funciones
+});
+
