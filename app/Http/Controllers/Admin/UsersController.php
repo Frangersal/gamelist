@@ -30,6 +30,13 @@ class UsersController extends Controller
         return view('admin.users.index')->with('users', $users);
     }
 
+    //Crear un metodo para redirigir a vista listall
+    public function listall()
+    {
+        $users = User::all();
+        return view('admin.users.listall')->with('users', $users);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
