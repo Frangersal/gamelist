@@ -1,9 +1,14 @@
 .bg-azul-primario {
     background-color: #002060;
   }
+
 .bg-azul-secundario {
-    background-color: #00194A;
-  }
+  background-color: #00194A;
+}
+
+.bg-blanco {
+  background-color: #fffff5;
+}
 
 .bg-amarillo-verde{
     background: linear-gradient(to bottom, #FFFF00, #BCFF00);

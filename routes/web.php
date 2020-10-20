@@ -29,10 +29,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin/listall', 'Admin\UsersController@listall')->name('listall'); // ajax lista usuarios
-
-
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users')->group(function(){    //Carpeta, prefijo, consola
-    Route::resource('/users','UsersController', ['except'=>['show','store']]);                                  //Ruta url, controller, funciones
+    Route::resource('/users','UsersController', ['except'=>['show']]);                                          //Ruta url, controller, funciones
 });
 
+// Route::resource('users', UsersController::class);
+
+Route::resource('books', BooksController::class);

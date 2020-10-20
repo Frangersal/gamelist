@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\DB;
 use App\Role;
+use App\User;
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\User;
+use DataTables;
 use Gate;
 
 
@@ -24,18 +27,28 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        $roles = Role::all();
-        return view('admin.users.index')->with('users', $users)->with('roles', $roles);
-    }
+        
+        $users = User::latest()->get();
+        
+        if ($request->ajax()) {
+            $data = User::latest()->get();
+            return Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function($row){
 
-    //Crear un metodo para redirigir a vista listall
-    public function listall()
-    {
-        $users = User::all();
-        return view('admin.users.listall')->with('users', $users);
+                $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editUser">Editar</a>';
+
+                $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteUser">Eliminar</a>';
+
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+      
+        return view('admin.users.index',compact('users'));
     }
 
     /**
@@ -50,6 +63,7 @@ class UsersController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'picture' => $data['picture'],
         ]);
 
         $role = Role::select('id')->where('name','user')->first();
@@ -68,20 +82,17 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nick'      => 'required|max:255',
-            'name'      => 'required|max:255',
-            'email'     => 'required',
-            'password'  => 'required',
-            // 'picture'   => 'required',
-        ]);
-  
-        $user = User::updateOrCreate(['id' => $request->id], [
-            'title' => $request->title,
-            'description' => $request->description
-        ]);
-  
-        return response()->json(['code'=>200, 'message'=>'Post Created successfully','data' => $post], 200);
+        User::updateOrCreate(['id' => $request->user_id],
+        [
+            'nick'      => $request->nick,
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->email),
+            'picture'   => $request->picture,
+
+        ]);        
+
+        return response()->json(['success'=>'User saved successfully.']);
     }
 
     /**
@@ -103,18 +114,21 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        if(Gate::denies('admin-users')){
-            return redirect(route('admin.users.index'));
-        } 
+        $user = User::find($id);
+        return response()->json($user);
+
+        // if(Gate::denies('admin-users')){
+        //     return redirect(route('admin.users.index'));
+        // } 
          
-        # dd($user); // Para visualizer la bd
-        $roles = Role::all();
-        return view('admin.users.edit')->with([
-            'user'=>$user,
-            'roles'=>$roles,
-        ]);
+        // # dd($user); // Para visualizer la bd
+        // $roles = Role::all();
+        // return view('admin.users.edit')->with([
+        //     'user'=>$user,
+        //     'roles'=>$roles,
+        // ]);
 
     }
 
@@ -127,12 +141,12 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        #dd($request);
-        $user->roles()->sync($request->roles);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save(); 
-        return redirect()->route('admin.users.index');  
+        // #dd($request);
+        // $user->roles()->sync($request->roles);
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->save(); 
+        // return redirect()->route('admin.users.index');  
 
     }
 
@@ -145,9 +159,9 @@ class UsersController extends Controller
     // public function destroy(User $user)
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
-
-        return response()->json(['success'=>'User eliminado con exito']);
+        User::find($id)->delete();
+     
+        return response()->json(['success'=>'User deleted successfully.']);
 
         // if(Gate::denies('admin-users')){
         //     return redirect(route('admin.users.index'));
