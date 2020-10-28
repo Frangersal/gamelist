@@ -29,10 +29,27 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users')->group(function(){    //Carpeta, prefijo, consola
-    Route::resource('/users','UsersController', ['except'=>['show']]);                                          //Ruta url, controller, funciones
+//Rutas de Administrador de usuario
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users')->group(function(){    //Carpeta c, carpeta vista, consola
+    Route::resource('/users','UsersController', ['except'=>['show','update']]);                                          //Ruta url, controller, funciones
 });
 
-// Route::resource('users', UsersController::class);
 
-Route::resource('books', BooksController::class);
+//Rutas de Administrador de Plataform
+Route::namespace('User')->prefix('user')->name('user.')->middleware('can:admin-users')->group(function(){       //Carpeta, prefijo, consola
+    Route::resource('/plataforms','PlataformsController', ['except'=>['show']]);                                //Ruta url, controller, funciones
+});
+
+//Rutas de Administrador de Gender
+Route::namespace('User')->prefix('user')->name('user.')->middleware('can:admin-users')->group(function(){       //Carpeta, prefijo, consola
+    Route::resource('/Genders','GendersController', ['except'=>['show']]);                                //Ruta url, controller, funciones
+});
+
+//Rutas de Administrador de Games
+Route::namespace('User')->prefix('user')->name('user.')->middleware('can:admin-users')->group(function(){       //Carpeta, prefijo, consola
+    Route::resource('/Games','GamesController', ['except'=>['show']]);                                //Ruta url, controller, funciones
+});
+
+// Route::resource('users', UsersController::class);PlataformsController
+
+// Route::resource('books', BooksController::class);

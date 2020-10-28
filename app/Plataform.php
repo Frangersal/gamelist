@@ -11,7 +11,7 @@ class Plataform extends Model
     protected $fillable = [
         'name',
         'description',
-        'imagen',
+        'image',
     ];
 
     

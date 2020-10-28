@@ -12,11 +12,15 @@ class Game extends Model
         'name',
         'serie',
         'gender',
+
+        'plataform',
         'developer',
         'publisher',
+
         'director',
         'productor',
         'release_date',
+        
         'admin_verification',
     ];
     

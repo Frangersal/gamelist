@@ -101,6 +101,18 @@
                                     </a>
                                     @endcan 
 
+                                    
+                                    <a class = "dropdown-item" href="{{ route('user.plataforms.index') }}">
+                                        Administrar Plataforms
+                                    </a>
+                                    
+                                    <a class = "dropdown-item" href="{{ route('user.Genders.index') }}">
+                                        Administrar Generos
+                                    </a>
+
+                                    <a class = "dropdown-item" href="{{ route('user.Games.index') }}">
+                                        Administrar Juegos
+                                    </a>
 
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

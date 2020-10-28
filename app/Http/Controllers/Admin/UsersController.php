@@ -8,11 +8,11 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use DataTables;
 use Gate;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 
 class UsersController extends Controller
@@ -141,13 +141,6 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // #dd($request);
-        // $user->roles()->sync($request->roles);
-        // $user->name = $request->name;
-        // $user->email = $request->email;
-        // $user->save(); 
-        // return redirect()->route('admin.users.index');  
-
     }
 
     /**

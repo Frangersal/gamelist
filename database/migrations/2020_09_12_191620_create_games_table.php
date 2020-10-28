@@ -14,14 +14,21 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
+            
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('name');
             $table->string('serie');
+            $table->string('gender');
+
+            $table->string('plataform');
             $table->string('developer');
             $table->string('publisher');
+
             $table->string('director');
+            $table->string('productor');
             $table->date('release_date');
+
             $table->string('admin_verification');
             $table->timestamps();
         });

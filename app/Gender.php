@@ -11,7 +11,7 @@ class Gender extends Model
     protected $fillable = [
         'name',
         'description',
-        'imagen',
+        'image',
     ];
 
     public function games()
