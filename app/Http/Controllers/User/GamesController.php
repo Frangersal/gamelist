@@ -87,21 +87,22 @@ class GamesController extends Controller
      */
     public function store(Request $request)
     {
+
         Game::updateOrCreate(['id' => $request->game_id],
         [
-            'name'          => $data['name'],
-            'serie'         => $data['serie'],
-            'gender'        => $data['gender'],
+            'name'          => $request->name,
+            'serie'         => $request->serie,
+            'gender'        => $request->gender,
             
-            'plataform'     => $data['plataform'],
-            'developer'     => $data['developer'],
-            'publisher'     => $data['publisher'],
+            'plataform'     => $request->plataform,
+            'developer'     => $request->developer,
+            'publisher'     => $request->publisher,
             
-            'director'      => $data['director'],
-            'productor'     => $data['productor'],
-            'release_date'  => $data['release_date'],
+            'director'      => $request->director,
+            'productor'     => $request->productor,
+            'release_date'  => $request->release_date,
             
-            'admin_verification'  => $data['admin_verification'],
+            'admin_verification'  => $request->admin_verification,
 
         ]);        
 

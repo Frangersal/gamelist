@@ -150,14 +150,14 @@
                 $('#modelHeading').html("Edit Plataform"); 
                 $('#saveBtn').val("edit-plataform"); 
                 $('#ajaxModel').modal('show');
-                $('#plataform').val(data.id);
+                $('#plataform_id').val(data.id);
 
                 $('#name').val(data.name);
                 $('#description').val(data.description);
                 $('#image').val(data.image);
 
             })
-    });
+        });
 
         //  Boton de Eliminar
         $('body').on('click', '.deletePlataform', function () {

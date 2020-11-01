@@ -150,7 +150,7 @@
                 $('#modelHeading').html("Edit Gender"); 
                 $('#saveBtn').val("edit-gender"); 
                 $('#ajaxModel').modal('show');
-                $('#gender').val(data.id);
+                $('#gender_id').val(data.id);
 
                 $('#name').val(data.name);
                 $('#description').val(data.description);

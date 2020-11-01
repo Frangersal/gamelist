@@ -115,10 +115,18 @@
 
                                 <div class="form-group">
                                     <label for="admin_verification" class="col-sm-2 control-label">admin v</label>
-                                    <div class="col-sm-12">
+                                    <!-- <div class="col-sm-12">
                                         <input type="text" class="form-control" id="admin_verification" name="admin_verification" placeholder="Ingresar admin_verification" value="" maxlength="50" required="">
+                                    </div> -->
+
+                                    <div class="col-sm-12">
+                                        <select   name="admin_verification" id="admin_verification" value="" maxlength="50" required="">
+                                            <option value="1">Si</option>
+                                            <option value="0">No</option>
+                                        </select>
                                     </div>
                                 </div>
+
 
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Guardar cambios
@@ -206,7 +214,7 @@ $(function () {
                 table.draw();
             },
             error: function (data) {
-                console.log('Error xd :', data);
+                console.log('Error:', data);
                 $('#saveBtn').html('Save Changes');
             }
         });
@@ -220,7 +228,7 @@ $(function () {
             $('#modelHeading').html("Edit Game"); 
             $('#saveBtn').val("edit-game"); 
             $('#ajaxModel').modal('show');
-            $('#game').val(data.id);
+            $('#game_id').val(data.id);
 
             $('#name').val(data.name);
             $('#serie').val(data.serie);
