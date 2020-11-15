@@ -17,9 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/perfil', function () {
-    return view('perfil');
-});
+
+Route::get('/perfil', 'PerfilController@index')->name('perfil');
+
+
+// Route::get('/perfil', function () {
+//     return view('perfil');
+// });
+
+// Rutas de Administrador de usuario
+// Route::middleware('can:user-users')->group(function(){    //Carpeta c, carpeta vista, consola
+//     Route::resource('/perfil','PerfilController', ['except'=>['show','update']]);                                          //Ruta url, controller, funciones
+// });
 
 Route::get('/test', function () {
     return view('test');

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Game;
 use App\User;
 
+use App\Gender;
+use App\Plataform;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
@@ -30,6 +33,9 @@ class GamesController extends Controller
     {
         $games = Game::latest()->get();
         
+        $genders = Gender::all();
+        $plataforms = Plataform::all();
+        
         if ($request->ajax()) {
             $data = Game::latest()->get();
             return Datatables::of($data)
@@ -46,7 +52,7 @@ class GamesController extends Controller
             ->make(true);
         }
       
-        return view('user.Games.index',compact('games'));
+        return view('user.Games.index',compact('games'))->with('genders',$genders)->with('plataforms',$plataforms);
     }
 
     /**

@@ -67,17 +67,25 @@
                                 <div class="form-group">
                                     <label for="gender" class="col-sm-2 control-label">gender</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="gender" name="gender" placeholder="Ingresar gender" value="" maxlength="50" required="">
+                                        <select class="form-control" name="gender" id="gender" value="" maxlength="50" required="">
+                                            @foreach($genders as $gender)
+                                                <option value="{{ $gender->name }}">{{ $gender->name }} </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="plataform" class="col-sm-2 control-label">plataform</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="plataform" name="plataform" placeholder="Ingresar plataform" value="" maxlength="50" required="">
+                                        <select class="form-control" name="plataform" id="plataform" value="" maxlength="50" required="">
+                                            @foreach($plataforms as $plataform)
+                                                <option value="{{ $plataform->name }}">{{ $plataform->name }} </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
-                
+                                
                                 <div class="form-group">
                                     <label for="developer" class="col-sm-2 control-label">developer</label>
                                     <div class="col-sm-12">
@@ -115,12 +123,8 @@
 
                                 <div class="form-group">
                                     <label for="admin_verification" class="col-sm-2 control-label">admin v</label>
-                                    <!-- <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="admin_verification" name="admin_verification" placeholder="Ingresar admin_verification" value="" maxlength="50" required="">
-                                    </div> -->
-
                                     <div class="col-sm-12">
-                                        <select   name="admin_verification" id="admin_verification" value="" maxlength="50" required="">
+                                        <select  class="form-control" name="admin_verification" id="admin_verification" value="" maxlength="50" required="">
                                             <option value="1">Si</option>
                                             <option value="0">No</option>
                                         </select>

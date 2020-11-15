@@ -1,4 +1,12 @@
 @extends('layouts.app')
+
+        <!-- Vue -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+        <!-- Vue y carusel -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+        <script src="https://cdn.rawgit.com/SSENSE/vue-carousel/6823411d/dist/vue-carousel.min.js"></script>
+
 @section('content')
 <div class="content">
     <!-- <div class="row">
@@ -74,16 +82,84 @@
             <div class="bg-amarillo-verde">
                 <h2>Titulo 1</h2> 
             </div>
-        
-            <div class="bg-azul-primario">
-                <div class="card" style="width: 10rem;">
-                    <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example</p>
-                        <a href="#" class="btn btn-primary">+GameList</a>
-                    </div>
-                </div>
+
+            
+            <div id="app">
+                <b-container>
+                <b-row>
+                    <b-col cols="12">
+                    <carousel :perPageCustom="[[400, 2], [700, 4]]">
+
+                        <slide class="p-2">
+                            <div class="card" style="width: 10rem;">
+                                <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">Card 1</h5>
+                                <p class="card-text">Some quick example text.</p>
+                                <a href="#" class="btn btn-primary">+GameList</a>
+                                </div>
+                            </div>
+                        </slide>
+
+                        <slide class="p-2">
+                            <div class="card" style="width: 10rem;">
+                                <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">Card 2</h5>
+                                <p class="card-text">Some quick example text.</p>
+                                <a href="#" class="btn btn-primary">+GameList</a>
+                                </div>
+                            </div>
+                        </slide>
+
+                        <slide class="p-2">
+                            <div class="card" style="width: 10rem;">
+                                <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">Card 3</h5>
+                                <p class="card-text">Some quick example text.</p>
+                                <a href="#" class="btn btn-primary">+GameList</a>
+                                </div>
+                            </div>
+                        </slide>
+
+                        <slide class="p-2">
+                            <div class="card" style="width: 10rem;">
+                                <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">Card 4</h5>
+                                <p class="card-text">Some quick example text.</p>
+                                <a href="#" class="btn btn-primary">+GameList</a>
+                                </div>
+                            </div>
+                        </slide>
+
+                        <slide class="p-2">
+                            <div class="card" style="width: 10rem;">
+                                <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">Card 3</h5>
+                                <p class="card-text">Some quick example text.</p>
+                                <a href="#" class="btn btn-primary">+GameList</a>
+                                </div>
+                            </div>
+                        </slide>
+
+                        <slide class="p-2">
+                            <div class="card" style="width: 10rem;">
+                                <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">Card 4</h5>
+                                <p class="card-text">Some quick example text.</p>
+                                <a href="#" class="btn btn-primary">+GameList</a>
+                                </div>
+                            </div>
+                        </slide>
+                        
+                    </carousel>
+                    </b-col>
+                </b-row>
+                </b-container>
             </div>
 
             <!-- Titulos -->
@@ -98,24 +174,123 @@
             </div>
         
             <div class="row">
-                <div class="col bg-azul-primario">
-                    <div class="card" style="width: 10rem;">
-                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example</p>
-                            <a href="#" class="btn btn-primary">+GameList</a>
-                        </div>
+                <div class="col-6 bg-azul-primario">
+                <div id="app">
+                        <b-container>
+                        <b-row>
+                            <b-col cols="12">
+                            <carousel :perPage="3">
+
+                                <slide class="p-2">
+                                    <div class="card" style="width: 10rem;">
+                                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Card 1</h5>
+                                        <p class="card-text">Some quick example text.</p>
+                                        <a href="#" class="btn btn-primary">+GameList</a>
+                                        </div>
+                                    </div>
+                                </slide>
+
+                                <slide class="p-2">
+                                    <div class="card" style="width: 10rem;">
+                                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Card 2</h5>
+                                        <p class="card-text">Some quick example text.</p>
+                                        <a href="#" class="btn btn-primary">+GameList</a>
+                                        </div>
+                                    </div>
+                                </slide>
+
+                                <slide class="p-2">
+                                    <div class="card" style="width: 10rem;">
+                                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Card 3</h5>
+                                        <p class="card-text">Some quick example text.</p>
+                                        <a href="#" class="btn btn-primary">+GameList</a>
+                                        </div>
+                                    </div>
+                                </slide>
+
+                                <slide class="p-2">
+                                    <div class="card" style="width: 10rem;">
+                                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Card 4</h5>
+                                        <p class="card-text">Some quick example text.</p>
+                                        <a href="#" class="btn btn-primary">+GameList</a>
+                                        </div>
+                                    </div>
+                                </slide>
+                                
+                            </carousel>
+                            </b-col>
+                        </b-row>
+                        </b-container>
                     </div>
                 </div>
-                <div class="col bg-azul-primario">
-                    <div class="card" style="width: 10rem;">
-                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example</p>
-                            <a href="#" class="btn btn-primary">+GameList</a>
-                        </div>
+
+                <!-- <div class="col-1 ">
+
+                </div> -->
+
+                <div class="col-6 bg-azul-primario">
+                <div id="app">
+                        <b-container>
+                        <b-row>
+                            <b-col cols="12">
+                            <carousel :perPage="3">
+
+                                <slide class="p-2">
+                                    <div class="card" style="width: 10rem;">
+                                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Card 1</h5>
+                                        <p class="card-text">Some quick example text.</p>
+                                        <a href="#" class="btn btn-primary">+GameList</a>
+                                        </div>
+                                    </div>
+                                </slide>
+
+                                <slide class="p-2">
+                                    <div class="card" style="width: 10rem;">
+                                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Card 2</h5>
+                                        <p class="card-text">Some quick example text.</p>
+                                        <a href="#" class="btn btn-primary">+GameList</a>
+                                        </div>
+                                    </div>
+                                </slide>
+
+                                <slide class="p-2">
+                                    <div class="card" style="width: 10rem;">
+                                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Card 3</h5>
+                                        <p class="card-text">Some quick example text.</p>
+                                        <a href="#" class="btn btn-primary">+GameList</a>
+                                        </div>
+                                    </div>
+                                </slide>
+
+                                <slide class="p-2">
+                                    <div class="card" style="width: 10rem;">
+                                        <img src="{!! asset('images/CVIcover.jpg') !!}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Card 4</h5>
+                                        <p class="card-text">Some quick example text.</p>
+                                        <a href="#" class="btn btn-primary">+GameList</a>
+                                        </div>
+                                    </div>
+                                </slide>
+                                
+                            </carousel>
+                            </b-col>
+                        </b-row>
+                        </b-container>
                     </div>
                 </div>
             </div>
@@ -126,4 +301,9 @@
 
     </div>
 </div>
+
+
+        <!-- carousel -->
+        <script src="{{ asset('js/carousel.js') }}"></script>
+    
 @endsection
