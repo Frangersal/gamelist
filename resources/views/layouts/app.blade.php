@@ -51,89 +51,80 @@
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-dark  shadow-sm navbar-expand-md  bg-azul-negro ">
-            <!-- navbar-light -->
-            <div class=" row container">
-
-                <div class="row">
-                <div class=" col-4">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                    GameList
-                        <!-- {{ config('app.name', 'GameList') }} -->
-                    </a>
-                </div>
-                 <!-- serch shit start mb-3-->
-
-                <div class="input-group col-4 centrado ">
-                    <input type="text" class="form-control " placeholder="Buscar...">
-                    <div class="input-group-append">
-                        <button class="btn btn-amarillo-verde" type="submit">Buscar</button>
-                    </div>
-                </div>
-
-                <div class=" col-4">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-</div>
+    <div class="d-flex flex-column min-vh-100">
+        <!-- NAVBAR ESTILO IMDB -->
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color: #07101c;">
+            <div class="container">
                 
-               
-                
-                <!-- serch shit end -->
+                <!-- Logo -->
+                <a class="navbar-brand font-weight-bold" style="color: #ffc107;" href="{{ url('/') }}">
+                    <span style="background-color: #ffc107; color: #000; padding: 2px 6px; border-radius: 4px; margin-right: 2px;">Game</span>List
+                </a>
 
-                <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                <!-- Botón Mobile -->
+                <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    </ul>
+                <!-- Contenido Navbar -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                    <!-- Buscador Central -->
+                    <form class="form-inline mx-auto my-2 my-lg-0 w-50">
+                        <div class="input-group w-100">
+                            <input type="text" class="form-control border-0" placeholder="Buscar juegos, géneros, plataformas..." aria-label="Buscar" style="background-color: #1a365d; color: white;">
+                            <div class="input-group-append">
+                                <button class="btn" type="submit" style="background-color: #ffc107; color: #000;">
+                                    <span class="font-weight-bold">Buscar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <!-- Links Derecha -->
+                    <ul class="navbar-nav ml-auto align-items-center">
+                        <li class="nav-item mr-3 d-none d-lg-block"><!--
+                            <a class="nav-link font-weight-bold text-white d-flex align-items-center" href="#">
+                            
+                            <span class="mr-1" style="font-size: 1.1rem;">➕</span> Mi GameList
+
+                            </a>-->
+                        </li>
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar-sesion') }}</a>
+                                <a class="nav-link text-white font-weight-bold" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+                                <li class="nav-item border-left border-secondary ml-2 pl-2 d-none d-md-block">
+                                    <a class="nav-link text-white font-weight-bold" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Cerrar sesion') }}
-                                    </a>
-
+                                <div class="dropdown-menu dropdown-menu-right shadow border-0" style="background-color: #1a365d;" aria-labelledby="navbarDropdown">
                                     
                                     @can('admin-users')
-                                    <a class = "dropdown-item" href="{{ route('admin.users.index') }}">
+                                    <a class="dropdown-item text-white pb-2 mb-2" href="{{ route('admin.users.index') }}" style="border-bottom: 1px solid #2b4c7e;">
                                         Administrar Usuarios
                                     </a>
                                     @endcan 
-
                                     
-                                    <a class = "dropdown-item" href="{{ route('user.plataforms.index') }}">
-                                        Administrar Plataforms
-                                    </a>
-                                    
-                                    <a class = "dropdown-item" href="{{ route('user.Genders.index') }}">
-                                        Administrar Generos
-                                    </a>
+                                    <a class="dropdown-item text-white" href="{{ route('user.plataforms.index') }}">Administrar Plataformas</a>
+                                    <a class="dropdown-item text-white" href="{{ route('user.Genders.index') }}">Administrar Géneros</a>
+                                    <a class="dropdown-item text-white" href="{{ route('user.Games.index') }}">Administrar Juegos</a>
 
-                                    <a class = "dropdown-item" href="{{ route('user.Games.index') }}">
-                                        Administrar Juegos
-                                    </a>
+                                    <div class="dropdown-divider border-secondary"></div>
 
+                                    <a class="dropdown-item text-warning font-weight-bold" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Cerrar sesión') }}
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -142,14 +133,80 @@
                             </li>
                         @endguest
                     </ul>
-                    </div>
-                <!-- </div> -->
+                </div>
             </div>
         </nav>
 
-        <main class="py-4  bg-azul-secundario">
+        <!-- MAIN CONTAINER -->
+        <main class="py-4 flex-grow-1" style="background-color: #0b1a2e;">
             @yield('content')
         </main>
+
+        <!-- FOOTER UNIVERSAL ESTILO IMDB -->
+        <footer class="pt-5 pb-4 mt-auto" style="background-color: #07101c; color: white; border-top: 2px solid #1a365d;">
+            <div class="container">
+                <div class="row mb-4">
+                    <!-- Logo y Descripción -->
+                    <div class="col-md-4 mb-4 mb-md-0 text-center text-md-left">
+                        <a class="navbar-brand font-weight-bold mx-0" style="color: #ffc107; font-size: 1.5rem;" href="{{ url('/') }}">
+                            <span style="background-color: #ffc107; color: #000; padding: 2px 6px; border-radius: 4px; margin-right: 2px;">Game</span>List
+                        </a>
+                        <p class="text-muted mt-3 mb-0" style="font-size: 0.9rem;">
+                            La base de datos definitiva para buscar, calificar y encontrar los mejores videojuegos. Lleva tu registro como un profesional.
+                        </p>
+                    </div>
+                    
+                    <!-- Enlaces Rápidos -->
+                    <div class="col-md-5 mb-4 mb-md-0 d-flex justify-content-center justify-content-md-start">
+                        <div class="mr-5">
+                            <h6 class="text-warning font-weight-bold mb-3">Descubrir</h6>
+                            <ul class="list-unstyled" style="font-size: 0.9rem;">
+                                <li class="mb-2"><a href="#" class="text-light text-decoration-none hover-warning">Nuevos Lanzamientos</a></li>
+                                <li class="mb-2"><a href="#" class="text-light text-decoration-none hover-warning">Juegos Populares</a></li>
+                                <li class="mb-2"><a href="#" class="text-light text-decoration-none hover-warning">Mejor Valorados</a></li>
+                                <li class="mb-2"><a href="#" class="text-light text-decoration-none hover-warning">Por Plataforma</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h6 class="text-warning font-weight-bold mb-3">Comunidad</h6>
+                            <ul class="list-unstyled" style="font-size: 0.9rem;">
+                                <li class="mb-2"><a href="#" class="text-light text-decoration-none hover-warning">Acerca de Nosotros</a></li>
+                                <li class="mb-2"><a href="#" class="text-light text-decoration-none hover-warning">Noticias (Blog)</a></li>
+                                <li class="mb-2"><a href="#" class="text-light text-decoration-none hover-warning">Contacto</a></li>
+                                <li class="mb-2"><a href="#" class="text-light text-decoration-none hover-warning">Reglas de Uso</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Redes Sociales y App -->
+                    <div class="col-md-3 text-center text-md-right">
+                        <h6 class="text-warning font-weight-bold mb-3">Síguenos</h6>
+                        <div class="mb-4">
+                            <!-- Iconos simulados -->
+                            <a href="#" class="btn btn-sm text-dark font-weight-bold rounded-circle mr-1" style="background-color: #ffc107; width: 32px; height: 32px; line-height: 20px;">f</a>
+                            <a href="#" class="btn btn-sm text-dark font-weight-bold rounded-circle mr-1" style="background-color: #ffc107; width: 32px; height: 32px; line-height: 20px;">𝕏</a>
+                            <a href="#" class="btn btn-sm text-dark font-weight-bold rounded-circle mr-1" style="background-color: #ffc107; width: 32px; height: 32px; line-height: 20px;">ig</a>
+                        </div>
+                        <!--
+                        <button class="btn btn-outline-light btn-sm w-100" style="border-color: #92a4bd; color: #92a4bd;">Descarga nuestra App 🎮</button>
+-->
+                    </div>
+                </div>
+
+                <hr style="border-color: #1a365d; margin-bottom: 20px;">
+
+                <!-- Legales -->
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-left text-muted small mb-2 mb-md-0">
+                        &copy; {{ date('Y') }} GameList. Todos los derechos reservados.
+                    </div>
+                    <div class="col-md-6 text-center text-md-right small">
+                        <a href="#" class="text-muted text-decoration-none mr-3">Política de Privacidad</a>
+                        <a href="#" class="text-muted text-decoration-none">Términos del Servicio</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
